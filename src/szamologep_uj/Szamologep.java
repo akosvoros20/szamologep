@@ -21,16 +21,12 @@ public class Szamologep implements ActionListener{
 	Font font2 = new Font("MS Mincho", Font.BOLD,16);
 	
 	
-	
 	double num1, num2, result;
 	char operator;
 	
-	
-  	
 	Szamologep(){
 		setupGui();
 	}
-	
 		
 	public void setupGui() {
 		
@@ -189,7 +185,7 @@ public class Szamologep implements ActionListener{
 		}
 		if(e.getSource()== osztas) {
 			if(textfield.getText().isEmpty()) {
-				textfield.setText("0");
+				textfield.setText("");
 			} 
 			num1 = Double.parseDouble(textfield.getText());
 			operator = '/';
@@ -240,11 +236,11 @@ public class Szamologep implements ActionListener{
 				textfield.setText(String.valueOf(num1));
 			} else {
 				num2 =Double.parseDouble(textfield.getText());
+				textfield2.setText(String.valueOf(num1)+operator+String.valueOf(num2));
 			}
 			
 			switch(operator) {
 				case '+':
-					textfield2.setText(String.valueOf(num1) + String.valueOf(operator) + String.valueOf(num2));
 					result = num1 + num2;
 					break;
 				case '-':
@@ -267,13 +263,16 @@ public class Szamologep implements ActionListener{
 			
 			textfield.setText(String.valueOf(result));
 			num1=result;
-			textfield2.setText(String.valueOf(result));
 		}
 		
 		if(e.getSource()== clr) {
+			//do {
+			//	textfield.setText(textfield.getText().substring(0, textfield.getText().length()-1));
+			//}while(textfield.getText().length() == 0);
+			
 			textfield.setText(textfield.getText().substring(0, textfield.getText().length()-1));
 			if(textfield.getText().length() == 0) {
-				textfield.setText("");
+			textfield.setText("");
 			}
 		}
 		
