@@ -48,6 +48,7 @@ public class Szamologep implements ActionListener{
 		textfield2.setBounds(50, 55, 300, 25);
 		textfield2.setEditable(false);
 		textfield2.setHorizontalAlignment(SwingConstants.RIGHT);
+		textfield2.setBorder(new LineBorder(Color.DARK_GRAY, 1));
 		textfield2.setForeground(Color.WHITE);
 		
 		plusz = new JButton("+");
@@ -204,11 +205,12 @@ public class Szamologep implements ActionListener{
 		if(e.getSource()== fact) {
 			num1 = Double.parseDouble(textfield.getText());
 			result = factorial(num1);
-			textfield.setText(String.valueOf(result));		
+			textfield.setText(String.valueOf(result));	
+			textfield2.setText("fact("+num1+")");
 		}
 		if(e.getSource()== pow) {
 			num1 = Double.parseDouble(textfield.getText());
-			operator = 'p';
+			operator = '^';
 			textfield.setText("");
 		}
 		if(e.getSource()== pow2) {
@@ -250,15 +252,16 @@ public class Szamologep implements ActionListener{
 					result = num1 * num2;
 					break;
 				case '/':
-					if(num2 == 0) {
+					if(num2 == 0.0) {
 						textfield.setText("0-val nem lehet osztani");
 					}
 					else {
 						result = num1 / num2;
 					}
 					break;	
-				case 'p':
+				case '^':
 					result = Math.pow(num1, num2);
+					break;
 			}
 			
 			textfield.setText(String.valueOf(result));
@@ -266,13 +269,8 @@ public class Szamologep implements ActionListener{
 		}
 		
 		if(e.getSource()== clr) {
-			//do {
-			//	textfield.setText(textfield.getText().substring(0, textfield.getText().length()-1));
-			//}while(textfield.getText().length() == 0);
-			
-			textfield.setText(textfield.getText().substring(0, textfield.getText().length()-1));
-			if(textfield.getText().length() == 0) {
-			textfield.setText("");
+			if(textfield.getText().length() > 0) {
+				textfield.setText(textfield.getText().substring(0, textfield.getText().length()-1));
 			}
 		}
 		
