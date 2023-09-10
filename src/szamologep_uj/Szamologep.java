@@ -212,11 +212,13 @@ public class Szamologep implements ActionListener{
 			num1 = Double.parseDouble(textfield.getText());
 			operator = '^';
 			textfield.setText("");
+
 		}
 		if(e.getSource()== pow2) {
 			num1 = Double.parseDouble(textfield.getText());
 			result = Math.pow(num1,2);
-			textfield.setText(String.valueOf(result));		
+			textfield.setText(String.valueOf(result));	
+			textfield2.setText("sqr("+num1+")");
 		}
 		if(e.getSource()== egyx) {
 			num1 = Double.parseDouble(textfield.getText());
@@ -226,7 +228,8 @@ public class Szamologep implements ActionListener{
 		if(e.getSource()== abs) {
 			num1 = Double.parseDouble(textfield.getText());
 			result = Math.abs(num1);
-			textfield.setText(String.valueOf(result));		
+			textfield.setText(String.valueOf(result));	
+			textfield2.setText("abs("+num1+")");
 		}
 		if(e.getSource()== minus) {
 			double temp = Double.parseDouble(textfield.getText());
@@ -235,7 +238,8 @@ public class Szamologep implements ActionListener{
 		}
 		if(e.getSource() == equ) {
 			if(textfield.getText().isEmpty()){
-				textfield.setText(String.valueOf(num1));
+				result = num1;
+				textfield2.setText(String.valueOf(result));
 			} else {
 				num2 =Double.parseDouble(textfield.getText());
 				textfield2.setText(String.valueOf(num1)+operator+String.valueOf(num2));
@@ -252,8 +256,11 @@ public class Szamologep implements ActionListener{
 					result = num1 * num2;
 					break;
 				case '/':
-					if(num2 == 0.0) {
+					if(num2 == 0) {
 						textfield.setText("0-val nem lehet osztani");
+						//num1 = 0;
+						//num2 = 0;
+						//result = 0;
 					}
 					else {
 						result = num1 / num2;
@@ -261,6 +268,7 @@ public class Szamologep implements ActionListener{
 					break;	
 				case '^':
 					result = Math.pow(num1, num2);
+					textfield2.setText(num1+"^"+num2);
 					break;
 			}
 			
